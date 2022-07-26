@@ -1,0 +1,14 @@
+#Google search is a great use case for analyzing data based on search queries.
+#Walk you through the task of Google search analysis with Python.
+
+import pandas as pd 
+from pytrends.request import TrendReq
+import matplotlib.pyplot as plt
+trends = TrendReq()
+
+trends.build_payload(kw_list=["HIV"])
+data = trends.interest_by_region()
+data = data.sort_values(by="HIV", ascending=False)
+data = data.head(10)
+print(data)
+
